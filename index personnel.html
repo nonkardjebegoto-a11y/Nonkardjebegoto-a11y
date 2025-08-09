@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechGuard Pro - Maintenance Informatique Haut de Gamme</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a365d;
+            --secondary: #2c5282;
+            --accent: #00b4d8;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #38b000;
+            --warning: #ff9e00;
+            --transition: all 0.4s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark);
+            background-color: #f0f4f8;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: 2px solid var(--accent);
+            box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 180, 216, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+        
+        .btn-outline:hover {
+            background: var(--accent);
+            color: white;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+        
+        .logo-text span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 8px 0;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 54, 93, 0.9), rgba(44, 82, 130, 0.9)), url('https://images.unsplash.com/photo-1468436139062-f60a71c5c892?ixlib=rb-4.0.3') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-btns {
+            margin-top: 30px;
+        }
+        
+        .hero-btns .btn {
+            margin: 0 10px;
+        }
+        
+        /* Services */
+        .services {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            text-align: center;
+            padding: 40px 30px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-icon {
+            font-size: 3.5rem;
+            color: var(--accent);
+            margin-bottom: 25px;
+        }
+        
+        .service-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+        
+        /* About */
+        .about {
+            padding: 100px 0;
+            background: linear-gradient(to right, #f0f4f8 0%, #f0f4f8 50%, var(--primary) 50%, var(--primary) 100%);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text {
+            padding: 30px;
+        }
+        
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+        }
+        
+        .about-features {
+            margin: 30px 0;
+        }
+        
+        .about-feature {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .about-feature i {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+        
+        .about-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            height: 500px;
+            background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3') no-repeat center center/cover;
+        }
+        
+        /* Stats */
+        .stats {
+            padding: 80px 0;
+            background: var(--primary);
+            color: white;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .stat-item i {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .stat-item .number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: var(--light);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: var(--accent);
+            opacity: 0.1;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .testimonial-content {
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            background: #ddd;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+        
+        /* Contact */
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(to right, var(--primary) 0%, var(--primary) 50%, #f0f4f8 50%, #f0f4f8 100%);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-info {
+            padding: 50px;
+            background: var(--primary);
+            color: white;
+        }
+        
+        .contact-info h2 {
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            margin-bottom: 25px;
+        }
+        
+        .contact-item i {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            min-width: 30px;
+        }
+        
+        .contact-form {
+            padding: 50px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 70px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-col h3 {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about {
+                background: #f0f4f8;
+            }
+            
+            .contact {
+                background: var(--primary);
+            }
+            
+            .contact-info {
+                border-radius: 15px 15px 0 0;
+            }
+            
+            .contact-form {
+                border-radius: 0 0 15px 15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-text">Tech<span>Guard</span> Pro</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">À Propos</a></li>
+                    <li><a href="#temoignages">Témoignages</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Maintenance Informatique Haut de Gamme</h1>
+                <p>Solutions sur mesure pour entreprises exigeantes - Disponibilité maximale, sécurité renforcée et performance optimale</p>
+                <div class="hero-btns">
+                    <a href="#services" class="btn">Nos Services</a>
+                    <a href="#contact" class="btn btn-outline">Contact Rapide</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos Services Premium</h2>
+                <p>Des solutions complètes pour votre infrastructure informatique</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Sécurité Avancée</h3>
+                    <p>Protection contre les cybermenaces avec des solutions de sécurité de pointe, surveillance 24/7 et audits réguliers.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Infrastructure Cloud</h3>
+                    <p>Migration, gestion et optimisation de vos environnements cloud pour une flexibilité et évolutivité maximales.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Support Premium</h3>
+                    <p>Assistance technique prioritaire avec temps de réponse garanti et solutions personnalisées pour vos besoins.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Sauvegarde & Récupération</h3>
+                    <p>Stratégies de sauvegarde robustes et plans de reprise après sinistre pour une continuité d'activité garantie.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Réseau & Connexion</h3>
+                    <p>Conception, déploiement et optimisation de réseaux haute performance pour une connectivité sans faille.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Surveillance Proactive</h3>
+                    <p>Monitoring constant de votre infrastructure avec alertes préventives et résolution anticipée des problèmes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Expertise Technique d'Excellence</h2>
+                    <p>Fondée en 2010, TechGuard Pro s'est imposée comme la référence en maintenance informatique haut de gamme pour les entreprises exigeantes.</p>
+                    <p>Notre équipe d'experts certifiés combine expertise technique et approche client sur mesure pour offrir un service incomparable.</p>
+                    
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Certifications Premium</h4>
+                                <p>Nos ingénieurs détiennent les certifications les plus prestigieuses du secteur</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Approche Sur Mesure</h4>
+                                <p>Chaque solution est conçue spécifiquement pour répondre à vos besoins uniques</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Intervention Rapide</h4>
+                                <p>Temps de réponse garanti de 30 minutes pour les clients prioritaires</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="btn">Demander un Audit Gratuit</a>
+                </div>
+                <div class="about-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <i class="fas fa-users"></i>
+                    <div class="number">650+</div>
+                    <p>Clients Satisfaits</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-tasks"></i>
+                    <div class="number">4800+</div>
+                    <p>Projets Réalisés</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-clock"></i>
+                    <div class="number">99.98%</div>
+                    <p>Taux de Disponibilité</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-certificate"></i>
+                    <div class="number">42</div>
+                    <p>Certifications</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="temoignages">
+        <div class="container">
+            <div class="section-title">
+                <h2>Témoignages Clients</h2>
+                <p>Ce que disent nos clients prestigieux</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"TechGuard Pro a révolutionné notre infrastructure IT. Leur approche proactive a réduit nos temps d'arrêt de 85% et leur équipe est toujours disponible pour nous conseiller."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image"></div>
+                        <div class="author-info">
+                            <h4>REMADJI ANITA Priscilla</h4>
+                            <p>Directrice IT, Financia Group</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Leur expertise en sécurité a protégé notre entreprise contre plusieurs attaques sophistiquées. Leur niveau de service dépasse largement ce que nous avons connu ailleurs."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image"></div>
+                        <div class="author-info">
+                            <h4>allafa Mbaidigelle</h4>
+                            <p>PDG, MedTech Solutions</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Depuis que nous travaillons avec TechGuard Pro, nos systèmes n'ont plus connu de panne majeure. Leur support technique est réactif, compétent et extrêmement professionnel."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image"></div>
+                        <div class="author-info">
+                            <h4>Julien Laoukoura</h4>
+                            <p>Directeur des Opérations, LuxeConfort</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Contactez-nous</h2>
+                    <p>Notre équipe est à votre disposition pour répondre à toutes vos questions et vous proposer une solution sur mesure.</p>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Adresse</h4>
+                            <p>12 Avenue des Technologies<br>DJAMENA/TCHAD</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h4>Téléphone</h4>
+                            <p>00 235 63 74 06 49</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>nonkardjebegoto@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Horaires</h4>
+                            <p>Lun-Ven: 8h-20h<br>Sam: 9h-14h</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h2>Demande de Service</h2>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Votre email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="Votre téléphone">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" required>
+                                <option value="" disabled selected>Service demandé</option>
+                                <option>Sécurité Informatique</option>
+                                <option>Infrastructure Cloud</option>
+                                <option>Support Technique</option>
+                                <option>Sauvegarde & Récupération</option>
+                                <option>Réseau & Connexion</option>
+                                <option>Surveillance Proactive</option>
+                                <option>Audit Informatique</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Votre message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Envoyer la Demande</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>TechGuard Pro</h3>
+                    <p>Le partenaire de confiance pour la maintenance informatique haut de gamme des entreprises exigeantes.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Sécurité Avancée</a></li>
+                        <li><a href="#">Infrastructure Cloud</a></li>
+                        <li><a href="#">Support Premium</a></li>
+                        <li><a href="#">Sauvegarde & Récupération</a></li>
+                        <li><a href="#">Réseau & Connexion</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Liens Utiles</h3>
+                    <ul class="footer-links">
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#about">À Propos</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#temoignages">Témoignages</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Abonnez-vous pour recevoir nos dernières actualités et conseils en sécurité informatique.</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Votre email" required>
+                        </div>
+                        <button type="submit" class="btn">S'abonner</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 TechGuard Pro. Tous droits réservés. | Conçu avec <i class="fas fa-heart" style="color: var(--accent);"></i> pour votre réussite</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
